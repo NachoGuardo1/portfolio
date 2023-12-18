@@ -22,6 +22,17 @@ export const Presentacion = () => {
       <Typography variant="h5" component="div" gutterBottom>
         Full-Stack Developer
       </Typography>
+      <Typography
+        variant="subtitle1"
+        component="div"
+        gutterBottom
+        textAlign="center"
+      >
+        Siempre buscando maneras de superar desafíos y resolver problemas de
+        manera eficiente. Me gusta encontrar soluciones creativas a los
+        problemas y me esfuerzo por aprender constantemente para mejorar mis
+        habilidades y conocimientos
+      </Typography>
 
       <ContactMe />
     </Grid>

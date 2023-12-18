@@ -19,17 +19,20 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LanguageIcon from "@mui/icons-material/Language";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
+import SchoolIcon from "@mui/icons-material/School";
 
 export const ContactMe = () => {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
   return (
-    <List sx={{ width: "100%", bgcolor: "background.paper", marginTop: 5 }}>
-      <Grid container justifyContent="space-around">
-        <Box xs={6} textAlign="center">
+    <List
+      sx={{ width: "100%", bgcolor: "background.paper", marginTop: "50px" }}
+    >
+      <Grid container justifyContent="space-between">
+        <Grid item xs={6} sm={5} md={3} textAlign="center">
           <Typography variant="overline">About Me</Typography>
           <ListItem>
             <ListItemIcon>
@@ -37,6 +40,7 @@ export const ContactMe = () => {
             </ListItemIcon>
             <ListItemText primary="Argentina" secondary="Tucuman" />
           </ListItem>
+
           <ListItem>
             <ListItemIcon>
               <LanguageIcon />
@@ -49,8 +53,17 @@ export const ContactMe = () => {
             </ListItemIcon>
             <ListItemText primary="English" secondary="C2" />
           </ListItem>
-        </Box>
-        <Box xs={6} textAlign="center">
+          <ListItem>
+            <ListItemIcon>
+              <SchoolIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary="Full Stack Developer"
+              secondary="Rolling Code School"
+            />
+          </ListItem>
+        </Grid>
+        <Grid item xs={6} sm={5} md={3} textAlign="center">
           <Typography variant="overline">Contact Me</Typography>
           <ListItem>
             <ListItemButton
@@ -98,7 +111,7 @@ export const ContactMe = () => {
               </ListItem>
             </List>
           </Collapse>
-        </Box>
+        </Grid>
       </Grid>
     </List>
   );

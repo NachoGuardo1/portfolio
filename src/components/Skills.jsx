@@ -31,7 +31,11 @@ export const Skills = () => {
   ];
   return (
     <>
-      <Typography variant="h5" textAlign="center" marginTop={5}>
+      <Typography
+        variant="h5"
+        textAlign="center"
+        sx={{ marginTop: "60px", marginBottom: "60px" }}
+      >
         Skills
       </Typography>
       <Grid
@@ -40,8 +44,7 @@ export const Skills = () => {
         display="flex"
         justifyContent="center"
         alignContent="center"
-        marginTop={3}
-        marginBottom={3}
+        sx={{ marginBottom: "60px" }}
       >
         {skills.map((skill) => (
           <Grid item xs={5} sm={5} md={3} marginX={1}>
