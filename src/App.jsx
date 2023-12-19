@@ -43,8 +43,8 @@ function App() {
             </IconButton>
           </Box>
           <Presentacion />
-          <Skills />
           <Projects />
+          <Skills />
           <BottomNav />
         </CssBaseline>
       </ThemeProvider>

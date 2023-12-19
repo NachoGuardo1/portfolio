@@ -4,8 +4,8 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import WorkIcon from "@mui/icons-material/Work";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 export const BottomNav = () => {
-  const [value, setValue] = useState(0); // Estado para la página actual
-  const [scrollY, setScrollY] = useState(0); // Estado para la posición de desplazamiento
+  const [value, setValue] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +20,7 @@ export const BottomNav = () => {
   }, []);
 
   useEffect(() => {
-    if (scrollY < 550) {
+    if (scrollY < 650) {
       setValue(0);
     } else if (scrollY < 1100) {
       setValue(1);
@@ -37,10 +37,10 @@ export const BottomNav = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const scrollSection2 = () => {
-    window.scrollTo({ top: 650, behavior: "smooth" });
+    window.scrollTo({ top: 750, behavior: "smooth" });
   };
   const scrollSection3 = () => {
-    window.scrollTo({ top: 1600, behavior: "smooth" });
+    window.scrollTo({ top: 2000, behavior: "smooth" });
   };
   return (
     <BottomNavigation
@@ -61,14 +61,14 @@ export const BottomNav = () => {
         size="small"
       />
       <BottomNavigationAction
-        icon={<BoltIcon />}
-        label="Skills"
+        icon={<WorkIcon />}
+        label="Projects"
         size="small"
         onClick={scrollSection2}
       />
       <BottomNavigationAction
-        icon={<WorkIcon />}
-        label="Projects"
+        icon={<BoltIcon />}
+        label="Skills"
         size="small"
         onClick={scrollSection3}
       />

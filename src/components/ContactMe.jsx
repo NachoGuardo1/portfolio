@@ -29,10 +29,18 @@ export const ContactMe = () => {
   };
   return (
     <List
-      sx={{ width: "100%", bgcolor: "background.paper", marginTop: "50px" }}
+      sx={{ width: "100%", bgcolor: "background.paper", marginTop: "60px" }}
     >
-      <Grid container justifyContent="space-between">
-        <Grid item xs={6} sm={5} md={3} textAlign="center">
+      <Grid
+        container
+        justifyContent={{
+          xs: "center",
+          sm: "center",
+          md: "space-around",
+          lg: "space-around",
+        }}
+      >
+        <Grid item xs={6} sm={5} md={5} lg={5} textAlign="center">
           <Typography variant="overline">About Me</Typography>
           <ListItem>
             <ListItemIcon>
@@ -51,7 +59,7 @@ export const ContactMe = () => {
             <ListItemIcon>
               <LanguageIcon />
             </ListItemIcon>
-            <ListItemText primary="English" secondary="C2" />
+            <ListItemText primary="English" secondary="EF SET C2" />
           </ListItem>
           <ListItem>
             <ListItemIcon>
@@ -63,7 +71,7 @@ export const ContactMe = () => {
             />
           </ListItem>
         </Grid>
-        <Grid item xs={6} sm={5} md={3} textAlign="center">
+        <Grid item xs={6} sm={5} md={5} lg={5} textAlign="center">
           <Typography variant="overline">Contact Me</Typography>
           <ListItem>
             <ListItemButton
