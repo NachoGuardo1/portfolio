@@ -1,9 +1,11 @@
 import {
+  Box,
   Card,
   CardActionArea,
   CardContent,
   CardMedia,
   Grid,
+  Paper,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -16,6 +18,8 @@ import ImgHtml from "../assets/html.png";
 import ImgBootstrap from "../assets/bootstrap.png";
 import ImgNode from "../assets/node.png";
 import ImgCss from "../assets/css.png";
+import { blue, grey } from "@mui/material/colors";
+import { dark } from "@mui/material/styles/createPalette";
 
 export const Skills = () => {
   const skills = [
@@ -31,20 +35,39 @@ export const Skills = () => {
   ];
   return (
     <>
-      <Typography variant="h5" textAlign="center" sx={{ marginBottom: "60px" }}>
-        Skills
-      </Typography>
+      <Paper
+        sx={{
+          width: "100%",
+          padding: 2,
+          marginBottom: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 550,
+            fontFamily: "monospace",
+            fontSize: { xs: "18px", md: " 22px" },
+            letterSpacing: ".1rem",
+          }}
+        >
+          Skills
+        </Typography>
+      </Paper>
       <Grid
         container
         spacing={3}
         display="flex"
         justifyContent="space-around"
         alignContent="center"
-        sx={{ marginBottom: "80px" }}
+        mb={10}
       >
         {skills.map((skill) => (
-          <Grid item xs={5} sm={5} md={3} marginX={1}>
-            <Card elevation={4} key={skill.id}>
+          <Grid item xs={5} sm={5} md={3} marginX={1} key={skill.id}>
+            <Card elevation={4}>
               <CardActionArea>
                 <CardMedia
                   component="img"

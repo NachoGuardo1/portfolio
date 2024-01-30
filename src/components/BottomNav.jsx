@@ -2,76 +2,57 @@ import React, { useEffect, useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import BoltIcon from "@mui/icons-material/Bolt";
 import WorkIcon from "@mui/icons-material/Work";
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
+
+import { useNavigate } from "react-router-dom";
+
 export const BottomNav = () => {
-  const [value, setValue] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (scrollY < 650) {
-      setValue(0);
-    } else if (scrollY < 1100) {
-      setValue(1);
-    } else {
-      setValue(2);
-    }
-  }, [scrollY]);
+  const [value, setValue] = useState("/");
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const scrollSection1 = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-  const scrollSection2 = () => {
-    window.scrollTo({ top: 750, behavior: "smooth" });
-  };
-  const scrollSection3 = () => {
-    window.scrollTo({ top: 2000, behavior: "smooth" });
-  };
+  useEffect(() => {
+    navigate(`${value}`);
+  }, [value]);
+
   return (
-    <BottomNavigation
+    <Paper
       sx={{
         width: "100%",
+        display: { xs: "flex", md: "none" },
         position: "fixed",
         bottom: 0,
-        justifyContent: "center",
       }}
-      value={value}
-      onChange={handleChange}
-      showLabels
+      elevation={3}
     >
-      <BottomNavigationAction
-        icon={<PersonIcon />}
-        label="About Me"
-        onClick={scrollSection1}
-        size="small"
-      />
-      <BottomNavigationAction
-        icon={<WorkIcon />}
-        label="Projects"
-        size="small"
-        onClick={scrollSection2}
-      />
-      <BottomNavigationAction
-        icon={<BoltIcon />}
-        label="Skills"
-        size="small"
-        onClick={scrollSection3}
-      />
-    </BottomNavigation>
+      <BottomNavigation
+        value={value}
+        onChange={handleChange}
+        showLabels
+        sx={{ display: "flex", justifyContent: "space-around", width: "100%" }}
+      >
+        <BottomNavigationAction
+          icon={<PersonIcon />}
+          label="About Me"
+          size="small"
+          value="/"
+        />
+        <BottomNavigationAction
+          icon={<WorkIcon />}
+          label="Projects"
+          size="small"
+          value="projects"
+        />
+        <BottomNavigationAction
+          icon={<BoltIcon />}
+          label="Skills"
+          size="small"
+          value="skills"
+        />
+      </BottomNavigation>
+    </Paper>
   );
 };

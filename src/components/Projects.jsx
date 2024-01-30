@@ -1,23 +1,14 @@
 import {
   Avatar,
   Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Chip,
-  Collapse,
-  Divider,
-  Grid,
+  Button,
   IconButton,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemButton,
-  ListItemText,
-  ListSubheader,
-  Stack,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -25,142 +16,244 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import PublicIcon from "@mui/icons-material/Public";
 import Img2do from "../assets/2do.jpg";
 import ImgEcco from "../assets/ecco.jpg";
+import ImgEcco2 from "../assets/eccoV2.jpg";
+import { useNavigate } from "react-router-dom";
 
 export const Projects = () => {
   const [open, setOpen] = useState(false);
   const [openB, setOpenB] = useState(false);
+  const [openC, setOpenC] = useState(false);
+  const navigate = useNavigate();
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
-  const handleClickB = () => {
-    setOpenB(!openB);
-  };
   return (
     <>
-      <Grid container justifyContent="center">
-        <Grid item xs={12} sm={11} md={11}>
-          <List
-            sx={{
-              width: "100%",
-              overflow: "auto",
-              maxHeight: 700,
-              "& ul": { padding: 0 },
-              marginBottom: "60px",
-            }}
-            subheader={<li />}
-          >
-            <ListSubheader sx={{ marginBottom: "30px" }}>
-              <Typography variant="h5" textAlign="center" color="text.primary">
-                Projects
-              </Typography>
-            </ListSubheader>
-            <ListItem sx={{ gap: 2, marginY: 3 }}>
-              <ListItemAvatar>
+      <Paper
+        sx={{
+          width: "100%",
+          padding: 2,
+          marginBottom: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 550,
+            fontFamily: "monospace",
+            fontSize: { xs: "18px", md: " 22px" },
+            letterSpacing: ".1rem",
+          }}
+        >
+          Projects
+        </Typography>
+      </Paper>
+
+      <TableContainer sx={{ marginBottom: 10 }}>
+        <Table>
+          <TableBody>
+            <TableRow hover>
+              <TableCell>
                 <Avatar
                   variant="rounded"
-                  alt="eccomerce"
-                  sx={{ width: 100, height: 150 }}
-                  src={ImgEcco}
-                />
-              </ListItemAvatar>
-              <Box>
-                <ListItemText
-                  primary="E-commerce"
-                  secondary="Prototipo de E-commerce que permite a los usuarios explorar
-                productos, agregarlos al carrito, agregar productos favoritos,
-                realizar compras simuladas entre otras funciones."
-                />
-                <Chip label="React" size="small" sx={{ marginRight: 1 }} />
-                <Chip label="Mongo Db" size="small" />
-                <Box display="flex" justifyContent="end">
-                  <IconButton
-                    aria-label="deploy"
-                    href="https://rolling-tech-v5l8.vercel.app/"
-                    target="blank"
-                  >
-                    <PublicIcon />
-                  </IconButton>
-                  <IconButton
-                    aria-label="repositorio"
-                    target="blank"
-                    onClick={handleClick}
-                  >
-                    <GitHubIcon />
-                  </IconButton>
-                  <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding sx={{}}>
-                      <ListItemButton
-                        href="https://github.com/NachoGuardo1/RollingTech"
-                        target="blank"
-                      >
-                        <Typography variant="caption">Front</Typography>
-                      </ListItemButton>
-                      <ListItemButton
-                        href="https://github.com/NachoGuardo1/RollingTechBack"
-                        target="blank"
-                      >
-                        <Typography variant="caption">Back</Typography>
-                      </ListItemButton>
-                    </List>
-                  </Collapse>
-                </Box>
-              </Box>
-            </ListItem>
-            <Divider />
-            <ListItem sx={{ gap: 2, marginY: 3 }}>
-              <ListItemAvatar>
-                <Avatar
-                  variant="rounded"
-                  alt="2do"
-                  sx={{ width: 100, height: 150 }}
                   src={Img2do}
+                  sx={{
+                    width: { xs: 120, md: 140 },
+                    height: { xs: 120, md: 140 },
+                  }}
                 />
-              </ListItemAvatar>
-              <Box>
-                <ListItemText
-                  primary="To-do List"
-                  secondary="Prototipo de lista TO-DO que permite a los usuarios crear,
-                editar, marcar como completas y borrrar tareas entre otras
-                funciones"
+              </TableCell>
+              <TableCell>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  gutterBottom
+                  sx={{
+                    fontFamily: "monospace",
+                    fontSize: { xs: "18px", md: " 22px" },
+                    fontWeight: 550,
+                  }}
+                >
+                  List to-do
+                </Typography>
+                <Typography
+                  variant="body2"
+                  component="div"
+                  gutterBottom
+                  sx={{
+                    fontFamily: "monospace",
+                    color: "text.secondary",
+                    fontSize: { xs: "14px", md: " 18px" },
+                  }}
+                >
+                  Prototipo de lista TO-DO que permite a los usuarios crear,
+                  editar, marcar como completas y borrrar tareas entre otras
+                  funciones
+                </Typography>
+                <IconButton onClick={() => setOpen(!open)}>
+                  <GitHubIcon />
+                </IconButton>
+                <IconButton href="https://2doapp.vercel.app/" target="blank">
+                  <PublicIcon />
+                </IconButton>
+                {open && (
+                  <Box marginTop={2}>
+                    <Button
+                      size="small"
+                      href="https://github.com/NachoGuardo1/To-Do"
+                      target="blank"
+                    >
+                      front
+                    </Button>
+                    <Button
+                      size="small"
+                      href="https://github.com/NachoGuardo1/Back-Datos"
+                      target="blank"
+                    >
+                      back
+                    </Button>
+                  </Box>
+                )}
+              </TableCell>
+            </TableRow>
+
+            <TableRow hover>
+              <TableCell>
+                <Avatar
+                  variant="rounded"
+                  src={ImgEcco}
+                  sx={{
+                    width: { xs: 120, md: 140 },
+                    height: { xs: 120, md: 140 },
+                  }}
                 />
-
-                <Chip label="React" size="small" sx={{ marginRight: 1 }} />
-                <Chip label="Mongo Db" size="small" />
-
-                <Box display="flex" justifyContent="end">
-                  <IconButton
-                    aria-label="deploy"
-                    href="https://2doapp.vercel.app/"
-                    target="blank"
-                  >
-                    <PublicIcon />
-                  </IconButton>
-                  <IconButton aria-label="repositorio" onClick={handleClickB}>
-                    <GitHubIcon />
-                  </IconButton>
-                  <Collapse in={openB} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                      <ListItemButton
-                        href="https://github.com/NachoGuardo1/To-Do"
-                        target="blank"
-                      >
-                        <Typography variant="caption">Front</Typography>
-                      </ListItemButton>
-                      <ListItemButton
-                        href="https://github.com/NachoGuardo1/Back-Datos"
-                        target="blank"
-                      >
-                        <Typography variant="caption">Back</Typography>
-                      </ListItemButton>
-                    </List>
-                  </Collapse>
-                </Box>
-              </Box>
-            </ListItem>
-          </List>
-        </Grid>
-      </Grid>
+              </TableCell>
+              <TableCell>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  gutterBottom
+                  sx={{
+                    fontFamily: "monospace",
+                    fontSize: { xs: "18px", md: " 22px" },
+                    fontWeight: 550,
+                  }}
+                >
+                  E-commerce v1
+                </Typography>
+                <Typography
+                  variant="body2"
+                  component="div"
+                  gutterBottom
+                  sx={{
+                    fontFamily: "monospace",
+                    color: "text.secondary",
+                    fontSize: { xs: "14px", md: " 18px" },
+                  }}
+                >
+                  Prototipo de E-commerce que permite a los usuarios explorar
+                  productos, agregarlos al carrito, agregar productos favoritos,
+                  realizar compras simuladas entre otras funciones.
+                </Typography>
+                <IconButton onClick={() => setOpenB(!openB)}>
+                  <GitHubIcon />
+                </IconButton>
+                <IconButton
+                  href="https://rolling-tech-v5l8.vercel.app/"
+                  target="blank"
+                >
+                  <PublicIcon />
+                </IconButton>
+                {openB && (
+                  <Box marginTop={2}>
+                    <Button
+                      size="small"
+                      href="https://github.com/NachoGuardo1/RollingTech"
+                      target="blank"
+                    >
+                      front
+                    </Button>
+                    <Button
+                      size="small"
+                      href="https://github.com/NachoGuardo1/RollingTechBack"
+                      target="blank"
+                    >
+                      back
+                    </Button>
+                  </Box>
+                )}
+              </TableCell>
+            </TableRow>
+            <TableRow hover>
+              <TableCell>
+                <Avatar
+                  variant="rounded"
+                  src={ImgEcco2}
+                  sx={{
+                    width: { xs: 120, md: 140 },
+                    height: { xs: 120, md: 140 },
+                  }}
+                />
+              </TableCell>
+              <TableCell>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  gutterBottom
+                  sx={{
+                    fontFamily: "monospace",
+                    fontSize: { xs: "18px", md: " 22px" },
+                    fontWeight: 550,
+                  }}
+                >
+                  E-commerce v2
+                </Typography>
+                <Typography
+                  variant="body2"
+                  component="div"
+                  gutterBottom
+                  sx={{
+                    fontFamily: "monospace",
+                    color: "text.secondary",
+                    fontSize: { xs: "14px", md: " 18px" },
+                  }}
+                >
+                  Prototipo de E-commerce con mejoras visuales con Material Ui,
+                  buscador funcional y mejoras en codigo
+                </Typography>
+                <IconButton onClick={() => setOpenC(!openC)}>
+                  <GitHubIcon />
+                </IconButton>
+                <IconButton
+                  href="https://ustore-reducer.vercel.app/"
+                  target="blank"
+                >
+                  <PublicIcon />
+                </IconButton>
+                {openC && (
+                  <Box marginTop={2}>
+                    <Button
+                      size="small"
+                      href="https://github.com/NachoGuardo1/LoginHooks"
+                      target="blank"
+                    >
+                      front
+                    </Button>
+                    <Button
+                      size="small"
+                      href="https://github.com/NachoGuardo1/Back-Datos"
+                      target="blank"
+                    >
+                      back
+                    </Button>
+                  </Box>
+                )}
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 };

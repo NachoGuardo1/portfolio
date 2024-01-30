@@ -28,9 +28,7 @@ export const ContactMe = () => {
     setOpen(!open);
   };
   return (
-    <List
-      sx={{ width: "100%", bgcolor: "background.paper", marginTop: "60px" }}
-    >
+    <List sx={{ width: "100%", bgcolor: "background.paper", marginBottom: 10 }}>
       <Grid
         container
         justifyContent={{
